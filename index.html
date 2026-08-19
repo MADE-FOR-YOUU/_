@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لعائشة 💌</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Tajawal:wght@400;500;700;800&family=Reem+Kufi:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FCEEEE;
+    --paper:#FFF7F6;
+    --ink:#3A2229;
+    --rose:#E8778E;
+    --rose-deep:#B8375A;
+    --teal:#8C3A5C;
+    --teal-deep:#6B2140;
+    --mustard:#E7A6C3;
+    --tape:#F7D6E0;
+    --tape2:#E9BFD0;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(42,33,29,0.06) 1px, transparent 0);
+    background-size: 22px 22px;
+    color:var(--ink);
+    font-family:'Tajawal', sans-serif;
+    overflow-x:hidden;
+  }
+  h1,h2,h3, .display{
+    font-family:'Lalezar', 'Reem Kufi', sans-serif;
+    font-weight:400;
+    letter-spacing:0.5px;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- Confetti ---------- */
+  #confetti-layer{
+    position:fixed; inset:0; pointer-events:none; z-index:999; overflow:hidden;
+  }
+  .confetti-piece{
+    position:absolute; top:-5%; width:10px; height:14px; opacity:0.9;
+    animation:fall linear forwards;
+    border-radius:2px;
+  }
+  @keyframes fall{
+    to{ transform:translateY(110vh) rotate(540deg); opacity:0.3; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px 20px;
+    position:relative;
+  }
+  .hero-eyebrow{
+    font-family:'Tajawal', sans-serif;
+    font-weight:700;
+    color:var(--rose-deep);
+    background:var(--tape);
+    padding:6px 18px;
+    border-radius:999px;
+    font-size:14px;
+    transform:rotate(-2deg);
+    margin-bottom:22px;
+    box-shadow:0 3px 0 rgba(0,0,0,0.06);
+  }
+  .hero h1{
+    font-size:clamp(48px, 11vw, 108px);
+    line-height:1.05;
+    margin:0;
+    color:var(--rose-deep);
+    text-shadow: 4px 4px 0 var(--mustard);
+    animation: pop-in 0.9s cubic-bezier(.2,1.4,.4,1) both;
+  }
+  @keyframes pop-in{
+    0%{ transform:scale(0.6) rotate(-6deg); opacity:0; }
+    100%{ transform:scale(1) rotate(0deg); opacity:1; }
+  }
+  .hero h1 span{
+    display:inline-block;
+    color:var(--teal-deep);
+    text-shadow:4px 4px 0 var(--rose);
+  }
+  .hero p.lede{
+    max-width:620px;
+    font-size:clamp(17px, 2.4vw, 22px);
+    margin-top:20px;
+    line-height:1.9;
+    color:var(--ink);
+  }
+  .scroll-hint{
+    margin-top:56px;
+    font-size:14px;
+    color:var(--teal-deep);
+    font-weight:700;
+    animation:bob 2s ease-in-out infinite;
+  }
+  @keyframes bob{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(10px); }
+  }
+
+  .float-shape{
+    position:absolute;
+    font-size:34px;
+    animation: floaty 6s ease-in-out infinite;
+    user-select:none;
+  }
+  @keyframes floaty{
+    0%,100%{ transform:translateY(0) rotate(0deg); }
+    50%{ transform:translateY(-22px) rotate(8deg); }
+  }
+
+  /* ---------- Section shell ---------- */
+  section{
+    padding:90px 20px;
+    position:relative;
+  }
+  .section-head{
+    text-align:center;
+    max-width:700px;
+    margin:0 auto 56px;
+  }
+  .section-head .kicker{
+    font-weight:800;
+    color:var(--teal-deep);
+    font-size:14px;
+    letter-spacing:2px;
+  }
+  .section-head h2{
+    font-size:clamp(34px, 6vw, 56px);
+    color:var(--rose-deep);
+    margin:8px 0 0;
+  }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.in{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  /* ---------- Corkboard ---------- */
+  .corkboard{
+    max-width:1100px;
+    margin:0 auto;
+    position:relative;
+  }
+  .board-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:44px 30px;
+    padding:20px 10px 10px;
+  }
+  .polaroid{
+    background:var(--paper);
+    padding:14px 14px 46px;
+    box-shadow:0 10px 22px rgba(42,33,29,0.18);
+    position:relative;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .polaroid img{
+    display:block;
+    width:100%;
+    height:230px;
+    object-fit:cover;
+    background:#ddd;
+  }
+  .polaroid figcaption{
+    position:absolute;
+    bottom:12px;
+    right:16px;
+    left:16px;
+    font-family:'Tajawal', sans-serif;
+    font-weight:700;
+    color:var(--ink);
+    font-size:15px;
+    text-align:center;
+  }
+  .polaroid:hover{
+    transform: scale(1.06) rotate(0deg) !important;
+    box-shadow:0 18px 30px rgba(42,33,29,0.28);
+    z-index:5;
+  }
+  .polaroid::before{
+    content:"";
+    position:absolute;
+    top:-14px;
+    right:50%;
+    transform:translateX(50%) rotate(-4deg);
+    width:70px;
+    height:26px;
+    background:var(--tape);
+    opacity:0.85;
+  }
+  .p1{ transform:rotate(-5deg); }
+  .p2{ transform:rotate(4deg); }
+  .p3{ transform:rotate(-3deg); }
+  .p4{ transform:rotate(6deg); }
+  .p5{ transform:rotate(-6deg); grid-column: span 1; }
+  .p2::before, .p4::before{ background:var(--tape2); }
+
+  /* ---------- Reasons ---------- */
+  .reasons-wrap{
+    max-width:980px;
+    margin:0 auto;
+  }
+  .reasons{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:26px;
+  }
+  .reason-card{
+    background:var(--paper);
+    border-radius:18px;
+    padding:28px 24px;
+    box-shadow:0 8px 0 rgba(42,33,29,0.08);
+    border:2px solid rgba(42,33,29,0.06);
+    transition: transform 0.3s ease;
+  }
+  .reason-card:nth-child(odd){ transform:rotate(-1.3deg); }
+  .reason-card:nth-child(even){ transform:rotate(1.3deg); }
+  .reason-card:hover{ transform:scale(1.04) rotate(0deg); }
+  .reason-card .emoji{
+    font-size:38px;
+    display:block;
+    margin-bottom:12px;
+  }
+  .reason-card h3{
+    font-size:24px;
+    color:var(--teal-deep);
+    margin:0 0 8px;
+  }
+  .reason-card p{
+    margin:0;
+    line-height:1.85;
+    font-size:15.5px;
+  }
+
+  /* ---------- Proud banner ---------- */
+  .proud{
+    background:var(--teal-deep);
+    color:var(--cream);
+    text-align:center;
+    padding:110px 20px;
+    position:relative;
+    overflow:hidden;
+  }
+  .proud::before, .proud::after{
+    content:"✦";
+    position:absolute;
+    color:var(--mustard);
+    font-size:40px;
+    opacity:0.5;
+  }
+  .proud::before{ top:14%; left:8%; animation:spin 8s linear infinite; }
+  .proud::after{ bottom:16%; right:9%; animation:spin 10s linear infinite reverse; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .proud h2{
+    font-size:clamp(36px, 7vw, 72px);
+    margin:0 0 20px;
+    color:var(--mustard);
+  }
+  .proud p{
+    max-width:640px;
+    margin:0 auto;
+    font-size:clamp(17px, 2.2vw, 21px);
+    line-height:2;
+  }
+  .heart-row{
+    margin-top:34px;
+    font-size:30px;
+    letter-spacing:14px;
+  }
+  .heart-row span{
+    display:inline-block;
+    animation: beat 1.4s ease-in-out infinite;
+  }
+  .heart-row span:nth-child(2){ animation-delay:0.15s; }
+  .heart-row span:nth-child(3){ animation-delay:0.3s; }
+  .heart-row span:nth-child(4){ animation-delay:0.45s; }
+  .heart-row span:nth-child(5){ animation-delay:0.6s; }
+  @keyframes beat{
+    0%,100%{ transform:scale(1); }
+    50%{ transform:scale(1.35); }
+  }
+
+  /* ---------- Letter ---------- */
+  .letter-wrap{
+    max-width:700px;
+    margin:0 auto;
+  }
+  .letter{
+    background:var(--paper);
+    border-radius:6px;
+    padding:52px 40px;
+    box-shadow:0 14px 34px rgba(42,33,29,0.16);
+    position:relative;
+    transform:rotate(-0.6deg);
+    border:1px solid rgba(42,33,29,0.08);
+  }
+  .letter p{
+    font-size:18px;
+    line-height:2.1;
+    margin:0 0 18px;
+  }
+  .letter .sign{
+    font-family:'Lalezar', sans-serif;
+    font-size:30px;
+    color:var(--rose-deep);
+    margin-top:26px;
+  }
+  .letter::before{
+    content:"";
+    position:absolute;
+    top:-16px;
+    left:50%;
+    transform:translateX(-50%) rotate(2deg);
+    width:80px;
+    height:28px;
+    background:var(--tape2);
+    opacity:0.9;
+  }
+
+  footer{
+    text-align:center;
+    padding:40px 20px 60px;
+    font-size:14px;
+    color:rgba(42,33,29,0.55);
+  }
+
+  @media (max-width:640px){
+    .polaroid img{ height:190px; }
+    section{ padding:70px 16px; }
+    .letter{ padding:38px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="confetti-layer"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="float-shape" style="top:12%; left:8%; animation-delay:0s;">✨</span>
+  <span class="float-shape" style="top:20%; right:10%; animation-delay:1.2s;">🌹</span>
+  <span class="float-shape" style="bottom:16%; left:12%; animation-delay:2.1s;">💫</span>
+  <span class="float-shape" style="bottom:22%; right:14%; animation-delay:0.6s;">💕</span>
+
+  <div class="hero-eyebrow">حاجة صغيرة ليكي 💌</div>
+  <h1>يا <span>عائشة</span> ...</h1>
+  <p class="lede">
+    الموقع ده مش عن حاجة كبيرة، هو بس علشان أقولك حاجة كنت محتاج أقولها بجد:
+    شكراً إنك موجودة. اسكرولي واقرأي، وابقي عارفة إن كل كلمة هنا معناها حقيقي.
+  </p>
+  <div class="scroll-hint">↓ انزلي تحت ↓</div>
+</section>
+
+<!-- CORKBOARD -->
+<section id="board">
+  <div class="section-head reveal">
+    <div class="kicker">لوحة الذكريات</div>
+    <h2>شوية من اللحظات اللي بتفرق</h2>
+  </div>
+  <div class="corkboard">
+    <div class="board-grid">
+      <figure class="polaroid p1 reveal"><img src="images/img1.jpeg" alt="ذكرى مع عائشة"><figcaption>ضحكة من قلب 😄</figcaption></figure>
+      <figure class="polaroid p2 reveal"><img src="images/img2.jpeg" alt="ذكرى مع عائشة"><figcaption>سهرة ما تتنسيش</figcaption></figure>
+      <figure class="polaroid p3 reveal"><img src="images/img3.jpeg" alt="ذكرى مع عائشة"><figcaption>مشوار وذكرى ✌️</figcaption></figure>
+      <figure class="polaroid p4 reveal"><img src="images/img4.jpeg" alt="ذكرى مع عائشة"><figcaption>يوم كنا بنهبل</figcaption></figure>
+      <figure class="polaroid p5 reveal"><img src="images/img5.jpeg" alt="ذكرى مع عائشة"><figcaption>تفاصيل بسيطة، فرحة كبيرة</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- REASONS -->
+<section id="reasons">
+  <div class="section-head reveal">
+    <div class="kicker">ليه أنا شاكرك</div>
+    <h2>حاجات كتير خلتني أحس إني محظوظ</h2>
+  </div>
+  <div class="reasons-wrap reasons">
+    <div class="reason-card reveal">
+      <span class="emoji">🫂</span>
+      <h3>مستحملاني دايماً</h3>
+      <p>في أوقات كنت صعب فيها على نفسي، وانتي كنتي موجودة من غير ما تتضايقي أو تبعدي. ده مش بسيط أبداً.</p>
+    </div>
+    <div class="reason-card reveal">
+      <span class="emoji">👂</span>
+      <h3>سامعاني من غير حكم</h3>
+      <p>كل مرة حكيتلك حاجة، حسيت إنك بتسمعي بجد، مش بس بتردي علشان ترضيني. ده فرق كبير.</p>
+    </div>
+    <div class="reason-card reveal">
+      <span class="emoji">🌟</span>
+      <h3>بتصدقي فيا</h3>
+      <p>حتى لما أنا نفسي كنت مش واثق، انتي كنتي شايفاني أحسن مما أنا شايف نفسي.</p>
+    </div>
+    <div class="reason-card reveal">
+      <span class="emoji">😂</span>
+      <h3>بتنوري أي يوم تعبان</h3>
+      <p>أي يوم وحش، ضحكة أو رسالة منك كانت كفاية تغير مزاجي كله.</p>
+    </div>
+    <div class="reason-card reveal">
+      <span class="emoji">🤝</span>
+      <h3>صداقة حقيقية</h3>
+      <p>مش صداقة مصلحة أو مجاملة، صداقة حسيت فيها إنك جنبي بجد وقت الجد.</p>
+    </div>
+    <div class="reason-card reveal">
+      <span class="emoji">💛</span>
+      <h3>إنسانة طيبة بجد</h3>
+      <p>القلب الطيب ده مش موجود بسهولة في كل حد، وانتي عندك منه حاجة كبيرة.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROUD BANNER -->
+<section class="proud reveal">
+  <h2>أنا فخور بيكي</h2>
+  <p>
+    مش بس علشان اللي بتعمليه، لكن علشان اللي انتي عليه. بجهدك، بطيبتك، وبإنك دايماً بتحاولي
+    تكوني أحسن نسخة منك. استمري كده يا عائشة، وابقي فاكرة إن في ناس بجد فخورة بيكي.
+  </p>
+  <div class="heart-row">
+    <span>💗</span><span>💗</span><span>💗</span><span>💗</span><span>💗</span>
+  </div>
+</section>
+
+<!-- LETTER -->
+<section id="letter">
+  <div class="section-head reveal">
+    <div class="kicker">آخر كلمة</div>
+    <h2>رسالة صغيرة</h2>
+  </div>
+  <div class="letter-wrap reveal">
+    <div class="letter">
+      <p>يا عائشة،</p>
+      <p>
+        عارف إن ده مجرد كلام، بس بجد ده اللي أقدر أوصفك بيه: مش كل الناس زيك،
+        ومفيش زيك في حياتي. وبجد من الناس اللي بحب أتكلم معاها، وانتي من أحسن الناس اللي عرفتهم.
+      </p>
+      <p>
+        بتمنى ظروف الحياة ما تفرقش بينا بجد. شكراً لكل لحظة كنتي موجودة فيها، وشكراً على كل
+        حاجة اتعملت علشاني، وكل لحظة فكرتي فيها فيا.
+      </p>
+      <p>
+        وأنا فخور بيكي، فخور إنك قوية وبتمري بكل ده. عارف إني مش عارف كل اللي بتمري بيه،
+        بس أنا فخور بيكي وشايفك قوية، إنك مستحملة كل ده.
+      </p>
+      <p>
+        شكراً يا عائشة على كل حاجة.
+      </p>
+      <div class="sign">أنا دايماً موجود وبدعمك 🤍</div>
+    </div>
+  </div>
+</section>
+
+<footer>صُنع بمحبة لعائشة ✨</footer>
+
+<script>
+  // Confetti burst on load
+  const colors = ['#E8778E', '#E7A6C3', '#8C3A5C', '#F7D6E0', '#B8375A'];
+  const layer = document.getElementById('confetti-layer');
+  function spawnConfetti(count){
+    for(let i=0;i<count;i++){
+      const el = document.createElement('div');
+      el.className = 'confetti-piece';
+      el.style.left = Math.random()*100 + 'vw';
+      el.style.background = colors[Math.floor(Math.random()*colors.length)];
+      el.style.animationDuration = (3 + Math.random()*2.5) + 's';
+      el.style.animationDelay = (Math.random()*1.5) + 's';
+      el.style.width = (6 + Math.random()*8) + 'px';
+      el.style.height = (10 + Math.random()*10) + 'px';
+      layer.appendChild(el);
+      setTimeout(()=> el.remove(), 7000);
+    }
+  }
+  spawnConfetti(70);
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.15 });
+  revealEls.forEach(el=> io.observe(el));
+</script>
+
+</body>
+</html>
